@@ -204,4 +204,9 @@ router.get('/health', (req, res) => {
   });
 });
 
+router.get('/my-ip', (req, res) => {
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  res.json({ ip: ip.replace('::ffff:', '') });
+});
+
 module.exports = router;

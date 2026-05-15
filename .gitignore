@@ -1,4 +1,4 @@
-# Dependencies
+# Node dependencies
 node_modules/
 frontend/node_modules/
 
@@ -6,15 +6,19 @@ frontend/node_modules/
 frontend/dist/
 
 # Logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Environment
+# Environment files
 .env
-.env.local
-.env.production
+.env.*
+
+# Vite cache
+node_modules/.vite/
 
 # IDE
 .vscode/
@@ -32,3 +36,8 @@ coverage/
 # Temporary files
 tmp/
 temp/
+.cache/
+
+# Misc
+.DS_Store
+npm-debug.log*

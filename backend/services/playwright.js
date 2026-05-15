@@ -935,7 +935,6 @@ async function automateStealthTraffic(url, options = {}, onProgress = null) {
         '--ignore-certificate-errors',
         '--ignore-certificate-errors-spki-list',
         '--no-zygote',
-        '--single-process',
         '--hide-scrollbars',
         '--mute-audio'
       ]
@@ -995,9 +994,14 @@ async function automateStealthTraffic(url, options = {}, onProgress = null) {
           captureScreenshot: shouldCaptureScreenshot
         }).then(result => {
           completedCount++;
-          successfulCount++;
+          if (result.success) {
+            successfulCount++;
+            console.log(`✅ Visit ${i + 1} OK (${result.duration}s) | Active slots: ${activeVisits.size}`);
+          } else {
+            failureCount++;
+            console.log(`❌ Visit ${i + 1} Failed: ${result.error || 'Unknown error'} | Active slots: ${activeVisits.size}`);
+          }
           activeVisits.delete(visitPromise);
-          console.log(`✅ Visit ${i + 1} OK (${result.duration}s) | Active slots: ${activeVisits.size}`);
           
           // Update progress
           if (onProgress) {
@@ -1242,8 +1246,13 @@ async function automateStormTraffic(url, options = {}, onProgress = null) {
           captureScreenshot: captureScreenshots && i === 0
         }).then(result => {
           completedCount++;
-          successfulCount++;
-          console.log(`✅ Storm Visit ${i + 1} OK (${result.duration}s)`);
+          if (result.success) {
+            successfulCount++;
+            console.log(`✅ Storm Visit ${i + 1} OK (${result.duration}s)`);
+          } else {
+            failureCount++;
+            console.log(`❌ Storm Visit ${i + 1} Failed: ${result.error || 'Unknown error'}`);
+          }
           
           if (onProgress) {
             const remaining = visitCount - completedCount;
@@ -1514,8 +1523,13 @@ async function automateSearchEngineTraffic(url, options = {}, onProgress = null)
           captureScreenshot: captureScreenshots && i === 0
         }).then(result => {
           completedCount++;
-          successfulCount++;
-          console.log(`✅ Search Visit ${i + 1} OK (${result.duration}s)`);
+          if (result.success) {
+            successfulCount++;
+            console.log(`✅ Search Visit ${i + 1} OK (${result.duration}s)`);
+          } else {
+            failureCount++;
+            console.log(`❌ Search Visit ${i + 1} Failed: ${result.error || 'Unknown error'}`);
+          }
           
           if (onProgress) {
             const remaining = visitCount - completedCount;

@@ -17,10 +17,10 @@ function LoadingScreen({ progress, onStop, url }) {
   // Effect to fetch and periodically update the public IP address
   useEffect(() => {
     const fetchIp = () => {
-      fetch('https://api.ipify.org?format=json')
+      fetch('/api/my-ip')
         .then(res => res.json())
-        .then(data => setIp(data.ip))
-        .catch(() => setIp('192.42.116.17'));
+        .then(data => setIp(data.ip || 'Unavailable'))
+        .catch(() => setIp('Unavailable'));
     };
 
     fetchIp();

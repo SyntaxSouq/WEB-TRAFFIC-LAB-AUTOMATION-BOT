@@ -9,16 +9,13 @@ function ResultCard({ data }) {
   const [ip, setIp] = useState('Detecting...');
 
   useEffect(() => {
-    fetch('https://ipapi.co/json/')
+    fetch('/api/my-ip')
       .then(res => res.json())
       .then(data => {
         setIp(data.ip || 'Unavailable');
       })
       .catch(() => {
-        fetch('https://api.ipify.org?format=json')
-          .then(res => res.json())
-          .then(data => setIp(data.ip))
-          .catch(() => setIp('Unavailable'));
+        setIp('Unavailable');
       });
   }, []);
 

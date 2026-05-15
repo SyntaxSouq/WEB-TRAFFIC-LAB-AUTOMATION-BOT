@@ -1,8 +1,16 @@
 {
-  "name": "playwright-automation",
+  "name": "traffic-automation-pro",
   "version": "1.0.0",
-  "description": "Modern web automation dashboard with anti-bot detection",
+  "description": "A professional web automation platform for human-like browser traffic generation built with Node.js, Playwright, and React.",
   "main": "backend/server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SyntaxSouq/traffic-automation-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SyntaxSouq/traffic-automation-pro/issues"
+  },
+  "homepage": "https://github.com/SyntaxSouq/traffic-automation-pro#readme",
   "scripts": {
     "dev:backend": "node backend/server.js",
     "dev:frontend": "cd frontend && npm run dev",
@@ -15,12 +23,19 @@
     "leapcell:start": "node backend/server.js"
   },
   "keywords": [
+    "browser automation",
     "playwright",
-    "automation",
-    "anti-bot"
+    "react",
+    "traffic simulation",
+    "anti-bot",
+    "ssrf",
+    "sse"
   ],
   "author": "",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "concurrently": "^9.2.1",
     "cors": "^2.8.6",

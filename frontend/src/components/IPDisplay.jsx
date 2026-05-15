@@ -6,7 +6,7 @@ function IPDisplay() {
   const [ip, setIp] = useState('Detecting...');
 
   useEffect(() => {
-    fetch('https://api.ipify.org?format=json')
+    fetch('/api/my-ip')
       .then(res => res.json())
       .then(data => setIp(data.ip || 'Unavailable'))
       .catch(() => setIp('Unavailable'));
